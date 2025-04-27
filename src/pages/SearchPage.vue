@@ -25,13 +25,16 @@
 			v-model:main-active-index="activeIndex"
 			:items="originItems"
 	/>
-
+<div style="padding: 8px">
+	<van-button block type="primary"  @click="doSearchResult">搜索</van-button>
+</div>
 
 </template>
 
 
 <script setup lang="ts">
 import {ref} from "vue";
+import {useRouter} from "vue-router";
 
 const searchText = ref('');
 
@@ -39,6 +42,8 @@ const searchText = ref('');
 const activeId = ref([]);
 //	左侧选中项的索引
 const activeIndex = ref(0);
+
+
 const originItems = [
 	{
 		text: '性别',
@@ -86,6 +91,18 @@ const doClose = (tag: any) => {
 		return item !== tag
 	})
 };
+
+const router = useRouter()
+
+const doSearchResult = () => {
+	 router.push({
+		 path:'/user/result',
+		 query:{
+			 activeId:activeId.value
+		 }
+	 })
+}
+
 
 </script>
 

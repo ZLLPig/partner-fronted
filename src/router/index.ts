@@ -27,6 +27,11 @@ const router = createRouter({
       path: '/user/edit',
       name:'用户编辑',
       component: () => import('../pages/UserEditPage.vue')
+    },
+    {
+      path: '/user/result',
+      name:'搜索结果',
+      component: () => import('../pages/SearchResultPage.vue')
     }
   ]
 })
