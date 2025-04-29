@@ -9,6 +9,11 @@ const router = createRouter({
       component: () => import('../pages/Index.vue')
     },
     {
+      path: '/user/userLogin',
+      name:'用户登录',
+      component: () => import('../pages/UserLoginPage.vue')
+    },
+    {
       path: '/team',
       name: '队伍',
       component: () => import('../pages/TeamPage.vue')

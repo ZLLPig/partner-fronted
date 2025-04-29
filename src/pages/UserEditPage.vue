@@ -18,6 +18,9 @@
 <script setup lang="ts">
 import {useRoute} from "vue-router";
 import {ref} from "vue";
+import myAxios from "../plugins/axios.ts";
+import {showSuccessToast,showFailToast} from "vant";
+import router from "../router";
 
 const route = useRoute();
 
@@ -27,9 +30,21 @@ const user = ref({
   editName:route.query.editName
 })
 
-const onSubmit = (values) => {
-	console.log('submit', values);
+const onSubmit = async () => {
+	const res = await myAxios.post('/user/update',{
+		'id':1,
+   [user.value.editKey as string]:user.value.currentValue
+	})
+	console.log(res,"修改内容")
+	if(res.code === 0 && res.data > 0){
+		showSuccessToast('修改成功');
+		router.back();
+	}else{
+		showFailToast('修改失败');
+	}
 };
+
+
 
 </script>
 
