@@ -14,6 +14,11 @@ const router = createRouter({
       component: () => import('../pages/UserLoginPage.vue')
     },
     {
+      path: '/user/userRegister',
+      name:'用户注册',
+      component: () => import('../pages/UserRegisterPage.vue')
+    },
+    {
       path: '/team',
       name: '队伍',
       component: () => import('../pages/TeamPage.vue')

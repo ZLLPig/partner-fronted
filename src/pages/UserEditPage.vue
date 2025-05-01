@@ -30,9 +30,10 @@ const user = ref({
   editName:route.query.editName
 })
 
+
 const onSubmit = async () => {
 	const res = await myAxios.post('/user/update',{
-		'id':1,
+	   "id":7,
    [user.value.editKey as string]:user.value.currentValue
 	})
 	console.log(res,"修改内容")
@@ -42,6 +43,7 @@ const onSubmit = async () => {
 	}else{
 		showFailToast('修改失败');
 	}
+	console.log(user.value);
 };
 
 
