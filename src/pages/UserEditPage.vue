@@ -21,6 +21,8 @@ import {ref} from "vue";
 import myAxios from "../plugins/axios.ts";
 import {showSuccessToast,showFailToast} from "vant";
 import router from "../router";
+import {getCurrentUser} from "../service/user.ts";
+import {c} from "vite/dist/node/moduleRunnerTransport.d-DJ_mE5sf";
 
 const route = useRoute();
 
@@ -32,8 +34,13 @@ const user = ref({
 
 
 const onSubmit = async () => {
+	const currentUser = await getCurrentUser()
+	if(!currentUser){
+		showFailToast("用户未登录");
+		return;
+	}
 	const res = await myAxios.post('/user/update',{
-	   "id":7,
+	   'id': currentUser.id,
    [user.value.editKey as string]:user.value.currentValue
 	})
 	console.log(res,"修改内容")

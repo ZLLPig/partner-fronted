@@ -1,20 +1,6 @@
 <template>
 
-	<van-card
-			v-for="user in userList"
-			:desc="user.profile"
-			:title="user.username"
-			:thumb="user.avatarUrl"
-	>
-		<template #tags>
-			<van-tag plain type="primary" v-for="tags in user.tags" style="margin-right: 8px;margin-top: 8px">
-				{{ tags }}
-			</van-tag>
-		</template>
-		<template #footer>
-			<van-button size="mini">联系我</van-button>
-		</template>
-	</van-card>
+	<UserCardList :user-list="userList" />
 
 
 	<!--!userList表示userList本身是不是null或者undefined-->
@@ -51,7 +37,7 @@ const userListData = await myAxios.get('/user/search/tags', {
 			// then里面没有return数据 所以userListData是空的前端页面无数据展示
 			.then(function (response) {
 				console.log('/user/search/tags success', response);
-				return response.data.data;   // ！！！！这里一定要加return
+				return response.data;   // ！！！！这里一定要加return，一个data就可以，拦截器中已经取过data
 			})
 			.catch(function (error) {
 				console.log('/user/search/tags error', error);
