@@ -1,6 +1,6 @@
 <template>
 <div id="teamPage">
-	<van-button type="primary" @click="doJoinTeam">加入队伍</van-button>
+	<van-button type="primary" @click="doJoinTeam">创建队伍</van-button>
 
 	<TeamCardList :teamList="teamList" />
 </div>
