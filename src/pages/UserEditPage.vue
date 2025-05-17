@@ -22,7 +22,6 @@ import myAxios from "../plugins/axios.ts";
 import {showSuccessToast,showFailToast} from "vant";
 import router from "../router";
 import {getCurrentUser} from "../service/user.ts";
-import {c} from "vite/dist/node/moduleRunnerTransport.d-DJ_mE5sf";
 
 const route = useRoute();
 

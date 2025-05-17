@@ -24,6 +24,11 @@ const router = createRouter({
       component: () => import('../pages/TeamPage.vue')
     },
     {
+      path: '/team/update',
+      name:'队伍更新',
+      component: () => import('../pages/TeamUpdatePage.vue')
+    },
+    {
       path: '/team/add',
       name:'添加队伍',
       component:() => import('../pages/TeamAddPage.vue')

@@ -2,6 +2,7 @@ import type {userType} from "./user";
 
 export type teamType = {
   id: number;
+  userId:number,
   name: string,
   description: string,
   expireTime?: Date,
