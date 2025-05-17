@@ -1,5 +1,5 @@
 <template>
-	<div id="teamCardList">
+	<div id="teamCardList" style="padding-bottom: 50px">
 		<van-card
 				v-for="team in props.teamList"
 				:desc="team.description"

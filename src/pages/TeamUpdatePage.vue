@@ -2,14 +2,14 @@
 	<div id="teamAdd">
 		<van-form @submit="onSubmit">
 			<van-field
-					v-model="addTeamDate.name"
+					v-model="addTeamForm.name"
 					name="name"
 					label="队伍名称"
 					placeholder="队伍名称"
 					:rules="[{ required: true, message: '请填写队伍名称' }]"
 			/>
 			<van-field
-					v-model="addTeamDate.description"
+					v-model="addTeamForm.description"
 					rows="4"
 					autosize
 					label="队伍简介"
@@ -17,7 +17,7 @@
 					placeholder="请输入队伍简介"
 			/>
 			<van-field
-					v-model="addTeamDate.expireTime"
+					v-model="addTeamForm.expireTime"
 					is-link
 					readonly
 					name="expireTime"
@@ -34,7 +34,7 @@
 			</van-popup>
 			<van-field name="radio" label="队伍状态">
 				<template #input>
-					<van-radio-group v-model="addTeamDate.status" direction="horizontal">
+					<van-radio-group v-model="addTeamForm.status" direction="horizontal">
 						<van-radio name="0">公开</van-radio>
 						<van-radio name="1">私有</van-radio>
 						<van-radio name="2">加密</van-radio>
@@ -43,8 +43,8 @@
 			</van-field>
 
 			<van-field
-					v-if=" Number(addTeamDate.status) === 2 "
-					v-model="addTeamDate.password"
+					v-if=" Number(addTeamForm.status) === 2 "
+					v-model="addTeamForm.password"
 					type="password"
 					name="password"
 					label="密码"
@@ -76,7 +76,7 @@ const route = useRoute();
 const id = route.query.id;
 
 //需要用户填写的表单数据
-const addTeamDate = ref({})
+const addTeamForm = ref()
 
 onMounted(async () => {
 	if (Number(id) <= 0) {
@@ -89,7 +89,7 @@ onMounted(async () => {
 		}
 	});
 	if (res.code === 0 && res.data) {
-		addTeamDate.value = res.data;
+		addTeamForm.value = res.data;
 	} else {
 		showFailToast("添加队伍失败，请重试");
 	}
@@ -98,8 +98,8 @@ onMounted(async () => {
 const onSubmit = async () => {
 
 	const postData = {
-		...addTeamDate.value,
-		status: Number(addTeamDate.value.status),
+		...addTeamForm.value,
+		status: Number(addTeamForm.value.status),
 	}
 
 	const res = await myAxios.post('/team/update', postData)
@@ -119,7 +119,7 @@ const onSubmit = async () => {
 const showPicker = ref(false);
 const pickerValue = ref([]);
 const onConfirm = ({selectedValues}) => {
-	addTeamDate.value.expireTime = selectedValues.join('-');
+	addTeamForm.value.expireTime = selectedValues.join('-');
 	pickerValue.value = selectedValues;
 	showPicker.value = false;
 };
