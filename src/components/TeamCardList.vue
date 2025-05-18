@@ -39,7 +39,7 @@ import myAxios from "../plugins/axios.ts";
 import {showFailToast, showSuccessToast} from "vant";
 import {onMounted, ref} from "vue";
 import {getCurrentUser} from "../service/user.ts";
-import {useRoute, useRouter} from "vue-router";
+import {useRouter} from "vue-router";
 
 interface TeamCardListProps {
 	teamList: teamType[];
@@ -68,8 +68,7 @@ const doJoinTeam = async (id: number) => {
 
 const router = useRouter();
 
-const route = useRoute();
-
+// 跳转至更新队伍页
 const doUpdateTeam = (id: number) => {
 	router.push({
 		path: '/team/update',

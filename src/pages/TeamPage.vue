@@ -1,6 +1,6 @@
 <template>
 <div id="teamPage">
-	<van-search v-model="value" placeholder="请输入队伍关键词" @search="doSearch(value)"/>
+	<van-search v-model="value" placeholder="搜索队伍" @search="doSearch"/>
 	<van-button type="primary" @click="doJoinTeam">创建队伍</van-button>
 	<van-empty v-if="teamList.length < 1" description="暂无数据"/>
 	<TeamCardList :teamList="teamList" />

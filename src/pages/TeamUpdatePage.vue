@@ -76,8 +76,9 @@ const route = useRoute();
 const id = route.query.id;
 
 //需要用户填写的表单数据
-const addTeamForm = ref()
+const addTeamForm = ref({})
 
+//获取之前的表单信息
 onMounted(async () => {
 	if (Number(id) <= 0) {
 		showFailToast("添加队伍失败");
@@ -118,7 +119,7 @@ const onSubmit = async () => {
 // 展示日期选择器
 const showPicker = ref(false);
 const pickerValue = ref([]);
-const onConfirm = ({selectedValues}) => {
+const onConfirm = ({ selectedValues }) => {
 	addTeamForm.value.expireTime = selectedValues.join('-');
 	pickerValue.value = selectedValues;
 	showPicker.value = false;
