@@ -39,6 +39,21 @@ const router = createRouter({
       component: () => import('../pages/UserPage.vue')
     },
     {
+      path:'/user/update',
+      name:'用户更新',
+      component:() => import('../pages/UserUpdatePage.vue')
+    },
+    {
+      path: '/user/team/creat',
+      name:'我创建的队伍',
+      component:() => import('../pages/UserTeamCreatePage.vue')
+    },
+    {
+      path: '/user/team/join',
+      name:'我加入的队伍',
+      component:() => import('../pages/UserTeamJoinPage.vue')
+    },
+    {
       path:'/search',
       name:'搜索',
       component: () => import('../pages/SearchPage.vue')
